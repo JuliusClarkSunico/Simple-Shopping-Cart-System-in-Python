@@ -2,7 +2,6 @@ import os
 
 DIVIDER = "-" * 20
 
-# display cart function: this function displays the current items in the cart
 def display_cart(cart):
     print(DIVIDER)
     if not cart:
@@ -13,7 +12,6 @@ def display_cart(cart):
             print(f"{idx}. {item['name']} - Qty: {item['qty']} - Price: {item['price']} each")
     print(DIVIDER)
 
-# display all carts function: this function displays all carts with their item counts
 def display_all_carts(carts):
     print(DIVIDER)
     if not carts:
@@ -24,10 +22,9 @@ def display_all_carts(carts):
             print(f"Cart {idx}: {len(cart)} item(s)")
     print(DIVIDER)
 
-# modify cart function: this function allows adding or removing items from a specific cart
 def modify_cart(cart):
     while True:
-        os.system('cls')  # Clear terminal before each cart modification prompt
+        os.system('cls') 
         display_cart(cart)
         print("Modify Cart Menu")
         print(DIVIDER)
@@ -68,7 +65,6 @@ def modify_cart(cart):
             print("Invalid option. Please choose a, r, or f.")
             input("Press Enter to continue...")
 
-# show totals function: this function calculates and displays totals for all carts
 def show_totals(carts):
     os.system('cls')
     print(DIVIDER)
@@ -101,12 +97,11 @@ def show_totals(carts):
     print(DIVIDER)
     input("Press Enter to continue...")
 
-# main function: this function runs the main menu loop
 def main():
     carts = []
 
     while True:
-        os.system('cls')  # Clear terminal at the start of each main menu loop
+        os.system('cls')
         print(DIVIDER)
         print("Main Menu:")
         print(DIVIDER)
@@ -120,12 +115,12 @@ def main():
         choice = input("Choose an option (1-6): ").strip()
         print(DIVIDER)
 
-        if choice == '1':
+        if choice == '1': # Add cart
             carts.append([])
             print(f"Added new cart. You now have {len(carts)} cart(s).")
             print(DIVIDER)
             input("Press Enter to continue...")
-        elif choice == '2':
+        elif choice == '2': # Remove cart
             if not carts:
                 print("No carts to remove.")
                 print(DIVIDER)
@@ -143,13 +138,13 @@ def main():
                 print("Please enter a valid number.")
             print(DIVIDER)
             input("Press Enter to continue...")
-        elif choice == '3':
+        elif choice == '3': # See list of carts
             display_all_carts(carts)
             for idx, cart in enumerate(carts, 1):
                 print(f"\nCart {idx}:")
                 display_cart(cart)
             input("Press Enter to continue...")
-        elif choice == '4':
+        elif choice == '4': # Modify a cart
             if not carts:
                 print("No carts to modify.")
                 print(DIVIDER)
@@ -166,9 +161,9 @@ def main():
                 print("Please enter a valid number.")
             print(DIVIDER)
             input("Press Enter to continue...")
-        elif choice == '5':
+        elif choice == '5': # Show total
             show_totals(carts)
-        elif choice == '6':
+        elif choice == '6': # Exit
             print("Exiting the shopping cart system.")
             print(DIVIDER)
             break
